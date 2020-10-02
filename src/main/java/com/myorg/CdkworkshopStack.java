@@ -25,7 +25,13 @@ public class CdkworkshopStack extends Stack {
         .handler("hello.handler") // file is "hello", function is "handler"
         .build();
 
+    // Defines our hitcounter resource
+    final HitCounter helloWithCounter = new HitCounter(this, "HelloHitCounter",
+        HitCounterProps.builder()
+            .downstream(hello)
+            .build());
+
     // Defines an API Gateway REST API resource backed by our "hello" function
-    LambdaRestApi.Builder.create(this, "Endpoint").handler(hello).build();
+    LambdaRestApi.Builder.create(this, "Endpoint").handler(helloWithCounter.getHandler()).build();
   }
 }
