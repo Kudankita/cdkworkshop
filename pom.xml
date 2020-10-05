@@ -84,6 +84,18 @@
       <version>${cdk.version}</version>
     </dependency>
 
-
+    <!-- Additional Construct Libraries -->
+    <!-- https://github.com/eladb/cdk-dynamo-table-viewer/issues/13 -->
+    <dependency>
+      <groupId>com.github.eladb</groupId>
+      <artifactId>cdk-dynamo-table-viewer</artifactId>
+      <version>[3.0.6,4)</version>
+      <exclusions>
+        <exclusion>
+          <groupId>software.amazon.jsii</groupId>
+          <artifactId>jsii-runtime</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
   </dependencies>
 </project>
